@@ -2,14 +2,9 @@ import { vi, describe, it, beforeEach, expect } from 'vitest';
 import type { Request, Response, NextFunction } from 'express';
 import { authController } from './auth-controller.js';
 import { registerSchema } from '../types/auth-types.js';
-import { hash } from '../utils/auth.js';
 
 vi.mock('../types/auth-types.js', () => ({
   registerSchema: { parse: vi.fn() },
-}));
-
-vi.mock('../utils/auth.js', () => ({
-  hash: vi.fn(),
 }));
 
 describe('auth-controller', () => {
@@ -17,8 +12,7 @@ describe('auth-controller', () => {
     vi.restoreAllMocks();
   });
   describe('register', () => {
-    it('hashes the password and calls authService.register', async () => {
-      vi.mocked(hash).mockResolvedValue('hash123');
+    it('calls authService.register', async () => {
       const reqBody = {
         email: 'user@email.com',
         password: 'secret123',
@@ -46,11 +40,11 @@ describe('auth-controller', () => {
         res as Response,
         next as NextFunction
       );
-      expect(registerSchema.parse).toHaveBeenCalled();
-      expect(hash).toHaveBeenCalledWith('secret123');
+      expect(registerSchema.parse).toHaveBeenCalledWith(reqBody);
+      
       expect(deps.authService.register).toHaveBeenCalledWith({
         email: 'user@email.com',
-        passwordHash: 'hash123',
+        password: 'secret123',
       });
       expect(res.status).toHaveBeenCalledWith(201);
       expect(res.send).toHaveBeenCalledWith('User registered.');

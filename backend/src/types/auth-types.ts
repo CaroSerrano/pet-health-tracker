@@ -10,7 +10,7 @@ export interface ControllerDeps {
 
 export interface RegisterPayload {
   email: string;
-  passwordHash: string;
+  password: string;
 }
 
 export const registerSchema = z.object({

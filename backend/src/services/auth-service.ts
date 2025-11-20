@@ -1,6 +1,7 @@
 import type { PrismaClient } from '../generated/prisma/client.js';
 import type { RegisterPayload } from '../types/auth-types.js';
 import { ValidationError } from '../types/errors.js';
+import { hash } from '../utils/auth.js';
 
 export class AuthService {
   prisma: PrismaClient;
@@ -16,7 +17,10 @@ export class AuthService {
     if (existingUser) {
       throw new ValidationError('User already exists.');
     }
-    await this.prisma.user.create({ data });
+    const hashedPassword = await hash(data.password);
+    await this.prisma.user.create({
+      data: { email: data.email, passwordHash: hashedPassword },
+    });
   }
 
   async login() {}
