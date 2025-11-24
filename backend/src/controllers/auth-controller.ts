@@ -32,4 +32,26 @@ export const authController = (deps: ControllerDeps) => ({
       next(error);
     }
   },
+  logout: (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.clearCookie('token', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'none',
+      });
+      res.status(200).json({ message: 'Logged out' });
+    } catch (error) {
+      next(error);
+    }
+  },
+  getCurrentUser: (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const token = req.cookies.token;
+      if (!token) return res.status(401).json({ message: 'No token' });
+      const decoded = verifyToken(token);
+      res.json(decoded);
+    } catch (error) {
+      next(error);
+    }
+  },
 });
