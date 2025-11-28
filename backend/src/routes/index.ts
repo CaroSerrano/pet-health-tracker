@@ -7,11 +7,9 @@ import petRouter from './pets-router.js';
 const apiRouter = (app: Express) => {
   const router = express.Router();
   router.use('/api/auth', authRouter);
-
   
-  //Montar el pets Router
   router.use('/api/pets',petRouter);
-
+  
   app.use(router);
 };
 
