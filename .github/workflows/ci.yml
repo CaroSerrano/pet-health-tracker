@@ -15,9 +15,6 @@ jobs:
   test-typescript:
     name: TypeScript Tests
     runs-on: ubuntu-latest
-    defaults: 
-      run:
-        working-directory: ./backend
 
     steps:
       - name: Checkout
@@ -29,11 +26,34 @@ jobs:
           node-version-file: .node-version
           cache: npm
 
+      - name: Debug - Verify structure
+        run: |
+          echo "=== DEBUG START ==="
+          echo "Workspace: ${{ github.workspace }}"
+          echo "Current directory:"
+          pwd
+          echo "---"
+          echo "All files in root:"
+          ls -la
+          echo "---"
+          echo "Backend directory contents:"
+          ls -la backend/ || echo "ERROR: backend/ directory not found!"
+          echo "---"
+          echo "package-lock.json exists?"
+          ls -la backend/package-lock.json || echo "ERROR: package-lock.json not found in backend/"
+          echo "=== DEBUG END ==="
+
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          cd backend
+          npm ci
 
       - name: Type Check
-        run: npm run build
+        run: |
+          cd backend
+          npm run build
 
       - name: Test
-        run: npm run test:unit
+        run: |
+          cd backend
+          npm run test:unit
