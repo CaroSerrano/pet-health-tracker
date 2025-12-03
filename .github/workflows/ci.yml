@@ -32,10 +32,23 @@ jobs:
           cache-dependency-path: ./backend/package-lock.json  
   
       - name: Install Dependencies  
-        run: npm ci  
+        run: npm ci
+        
+      - name: Lint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Quality Metrics  
+        run: |  
+          echo "## ESLint Quality Report" >> $GITHUB_STEP_SUMMARY  
+          echo "" >> $GITHUB_STEP_SUMMARY  
+          npm run lint >> $GITHUB_STEP_SUMMARY  
+        continue-on-error: true  
   
       - name: Type Check  
         run: npm run build  
   
       - name: Test  
         run: npm run test:unit
+
+
