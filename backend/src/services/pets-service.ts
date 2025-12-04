@@ -27,7 +27,7 @@ export class PetService {
     age: number;
     weight: number;
     photoUrl: string;
-    
+        
     }) {    
     
     return await this.prisma.pet.create({
@@ -64,9 +64,9 @@ export class PetService {
     if (petDelete){
       const deleteResul = await this.prisma.pet.delete({
         where: {id}
-      });
-      return petDelete;
-    }    
+      });      
+      return deleteResul;
+    }        
   }
 
   async editPets(
@@ -77,6 +77,7 @@ export class PetService {
       breed: string;
       age: number;
       weight: number;      
+      photoUrl: string;
   }) 
   {
     const resultEditPets = await this.prisma.pet.update({
@@ -93,5 +94,5 @@ export class PetService {
         userId,
       },
     });
-  }
+  } 
 }

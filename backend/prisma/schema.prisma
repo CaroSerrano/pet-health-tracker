@@ -47,7 +47,7 @@ model Event {
   date          DateTime
   attachmentUrl String
   petId         String
-  pet           Pet        @relation(fields: [petId], references: [id])
+  pet           Pet        @relation(fields: [petId], references: [id],onDelete: Cascade)
   reminders     Reminder[]
 }
 
@@ -56,7 +56,7 @@ model Reminder {
   triggerTime DateTime
   status      ReminderStatus @default(PENDING)
   eventId     String
-  event       Event          @relation(fields: [eventId], references: [id])
+  event       Event          @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
 
 enum EventType {

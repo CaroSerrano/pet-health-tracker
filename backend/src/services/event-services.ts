@@ -7,15 +7,13 @@ export class EventService {
     this.prisma = prisma;
   }
 
-  async register({
-   // userId,
+  async register({   
     petId,
     type,
     description,
     date,
     attachmentUrl,
-  }:{
-    //userId: string,
+  }:{    
     petId: string,
     type: EventType,
     description: string,
@@ -24,8 +22,7 @@ export class EventService {
   }){
  
     return this.prisma.event.create({
-      data:{
-        //userId,
+      data:{        
         petId,
         type,
         description,

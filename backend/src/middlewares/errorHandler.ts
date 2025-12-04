@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { ValidationError } from '../types/errors.js';
+import { ValidationError,NotFoundError } from '../types/errors.js';
 import { ZodError, z } from 'zod';
 
 export function errorHandler(
@@ -20,6 +20,9 @@ export function errorHandler(
   }
   if (err instanceof ValidationError) {
     return res.status(400).json({ message: err.message });
+  }
+  if (err instanceof NotFoundError) {
+    return res.status(404).json({ message: err.message });
   }
   if (err instanceof Error) {
     return res.status(500).json({ message: err.message });
