@@ -1,7 +1,5 @@
+.secrets
 node_modules
-
 .env
-
 dist
-
 .vscode

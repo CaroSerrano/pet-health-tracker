@@ -1,25 +1,25 @@
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'
 
 export interface SendEmailPayload {
-  email: string;
-  token: string;
+  email: string
+  token: string
 }
 
-// Aclaración: El entorno de prueba de Mailgun solo permite enviar emails a las direcciones autorizadas (hasta 5). Como estamos utilizando un dominio de prueba, los emails llegan a la carpeta SPAM. 
+// Aclaración: El entorno de prueba de Mailgun solo permite enviar emails a las direcciones autorizadas (hasta 5). Como estamos utilizando un dominio de prueba, los emails llegan a la carpeta SPAM.
 
 export async function sendPasswordRecoveryEmail(data: SendEmailPayload) {
-  const mailgunUser = process.env.MAILGUN_SMTP_USER;
+  const mailgunUser = process.env.MAILGUN_SMTP_USER
   const transporter = nodemailer.createTransport({
     host: process.env.MAILGUN_SMTP,
     port: 587,
     secure: false,
     auth: {
       user: mailgunUser,
-      pass: process.env.MAILGUN_SMTP_PASSWORD,
-    },
-  });
+      pass: process.env.MAILGUN_SMTP_PASSWORD
+    }
+  })
 
-  const url = `${process.env.FRONTEND_URL}/reset-password?token=${data.token}`;
+  const url = `${process.env.FRONTEND_URL}/reset-password?token=${data.token}`
 
   await transporter.sendMail({
     from: `"Care Paws" <${mailgunUser}>`,
@@ -48,6 +48,6 @@ export async function sendPasswordRecoveryEmail(data: SendEmailPayload) {
           Si no solicitaste la recuperación de tu contraseña, puedes ignorar este email. Tu contraseña actual permanecerá sin cambios.
         </p>
       </div>
-    `,
-  });
+    `
+  })
 }

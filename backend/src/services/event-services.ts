@@ -1,50 +1,49 @@
-import {EventType, PrismaClient} from '../generated/prisma/client.js';
+import { EventType, PrismaClient } from '../generated/prisma/client.js'
 
 export class EventService {
-  prisma: PrismaClient;
+  prisma: PrismaClient
 
-  constructor(prisma: PrismaClient){
-    this.prisma = prisma;
+  constructor(prisma: PrismaClient) {
+    this.prisma = prisma
   }
 
-  async register({   
+  async register({
     petId,
     type,
     description,
     date,
-    attachmentUrl,
-  }:{    
-    petId: string,
-    type: EventType,
-    description: string,
-    date: string,
-    attachmentUrl: string;
-  }){
- 
+    attachmentUrl
+  }: {
+    petId: string
+    type: EventType
+    description: string
+    date: string
+    attachmentUrl: string
+  }) {
     return this.prisma.event.create({
-      data:{        
+      data: {
         petId,
         type,
         description,
         date,
-        attachmentUrl,
-      },
-    });    
+        attachmentUrl
+      }
+    })
   }
 
-  async consultEventPet (petId: string){
+  async consultEventPet(petId: string) {
     const resulEvent = await this.prisma.event.findMany({
-      where:{petId},
-      orderBy:{date:'desc'},
-    });
-    return resulEvent;
+      where: { petId },
+      orderBy: { date: 'desc' }
+    })
+    return resulEvent
   }
 
-  async consultEventTypePet (petId:string, type: EventType){
+  async consultEventTypePet(petId: string, type: EventType) {
     const resulEventType = await this.prisma.event.findMany({
-      where:{petId,type},
-      orderBy:{date:'desc'},
-    });
-    return resulEventType;
+      where: { petId, type },
+      orderBy: { date: 'desc' }
+    })
+    return resulEventType
   }
 }
