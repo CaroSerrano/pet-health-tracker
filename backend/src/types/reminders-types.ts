@@ -34,5 +34,7 @@ export const createReminderSchema = z.object({
   triggerTime: z.string(),
   eventId: z.string(),
   message: z.string().optional(),
-  eventUrl: z.string().optional()
+  eventUrl: z.string().optional(),
 });
+
+export type CreateReminderSchema = z.infer<typeof createReminderSchema>;
