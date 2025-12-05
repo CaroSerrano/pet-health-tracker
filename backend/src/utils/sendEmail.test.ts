@@ -24,6 +24,7 @@ describe('sendPasswordRecoveryEmail', () => {
     process.env = { ...process.env, ...mockEnv }
     vi.clearAllMocks()
     vi.mocked(nodemailer.createTransport).mockReturnValue(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mockTransporter as any
     )
     mockSendMail.mockResolvedValue({ messageId: 'test-message-id' })

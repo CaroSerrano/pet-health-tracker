@@ -1,40 +1,40 @@
-import type { Reminder, Event } from '../generated/prisma/client.js';
-import type { ReminderStatus } from '../generated/prisma/enums.js';
-import { z } from 'zod';
+import type { Reminder, Event } from '../generated/prisma/client.js'
+import type { ReminderStatus } from '../generated/prisma/enums.js'
+import { z } from 'zod'
 
 export interface ReminderWithEvent {
-  id: string;
-  triggerTime: Date;
-  status: ReminderStatus;
-  eventId: string;
-  event: Event;
+  id: string
+  triggerTime: Date
+  status: ReminderStatus
+  eventId: string
+  event: Event
 }
 export interface IRemindersService {
-  listByEventId: (eventId: string) => Promise<Reminder[]>;
-  create: (data: CreatePayload) => Promise<ReminderWithEvent>;
-  update: (id: string, data: UpdatePayload) => Promise<Reminder>;
-  delete: (id: string) => Promise<void>;
-  deleteAllByEventId: (eventId: string) => Promise<void>;
+  listByEventId: (eventId: string) => Promise<Reminder[]>
+  create: (data: CreatePayload) => Promise<ReminderWithEvent>
+  update: (id: string, data: UpdatePayload) => Promise<Reminder>
+  delete: (id: string) => Promise<void>
+  deleteAllByEventId: (eventId: string) => Promise<void>
 }
 export interface ControllerDeps {
-  remindersService: IRemindersService;
+  remindersService: IRemindersService
 }
 
 export interface CreatePayload {
-  triggerTime: string;
-  eventId: string;
+  triggerTime: string
+  eventId: string
 }
 
 export interface UpdatePayload {
-  triggerTime?: Date;
-  status?: ReminderStatus;
+  triggerTime?: Date
+  status?: ReminderStatus
 }
 
 export const createReminderSchema = z.object({
   triggerTime: z.string(),
   eventId: z.string(),
   message: z.string().optional(),
-  eventUrl: z.string().optional(),
-});
+  eventUrl: z.string().optional()
+})
 
-export type CreateReminderSchema = z.infer<typeof createReminderSchema>;
+export type CreateReminderSchema = z.infer<typeof createReminderSchema>

@@ -11,11 +11,11 @@ const apiRouter = (app: Express) => {
 
   router.use('/api/pets', petRouter)
 
-  router.use('/api/pets/:id/events',eventsRouter)
+  router.use('/api/pets/:id/events', eventsRouter)
 
   router.use('/api/reminders', remindersRouter)
 
-  app.use(router);
-};
+  app.use(router)
+}
 
 export default apiRouter

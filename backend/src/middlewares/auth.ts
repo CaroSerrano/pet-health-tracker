@@ -16,7 +16,7 @@ export function authMiddleware(
     const decoded = verifyToken(token)
     req.user = decoded
     next()
-  } catch (err) {
+  } catch {
     return res.status(401).json({ message: 'Invalid or expired token' })
   }
 }

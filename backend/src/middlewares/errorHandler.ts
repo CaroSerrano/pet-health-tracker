@@ -1,13 +1,8 @@
-import type { Request, Response, NextFunction } from 'express'
+import type { Request, Response } from 'express'
 import { ValidationError, NotFoundError } from '../types/errors.js'
 import { ZodError, z } from 'zod'
 
-export function errorHandler(
-  err: unknown,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-) {
+export function errorHandler(err: unknown, _req: Request, res: Response) {
   if (err && typeof err === 'object' && 'name' in err) {
     if (
       err.name === 'TokenExpiredError' ||

@@ -1,4 +1,3 @@
-// eslint.config.mjs
 import { FlatCompat } from '@eslint/eslintrc'
 import js from '@eslint/js'
 import vitest from 'eslint-plugin-vitest'
@@ -32,7 +31,8 @@ export default [
     rules: {
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
-      'prettier/prettier': 'warn'
+      'prettier/prettier': 'warn',
+      'no-process-env': 'off'
       //'vitest/expect-expect': 'error',
       //'vitest/no-disabled-tests': 'error',
       //'vitest/no-focused-tests': 'warn',
