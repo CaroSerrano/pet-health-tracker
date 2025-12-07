@@ -37,18 +37,18 @@ export const authController = (deps: ControllerDeps) => ({
       next(error)
     }
   },
-  logout: (req: Request, res: Response, next: NextFunction) => {
-    try {
-      res.clearCookie('token', {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'none'
-      })
-      res.status(200).json({ message: 'Logged out' })
-    } catch (error) {
-      next(error)
-    }
-  },
+  logout: (_req: Request, res: Response, next: NextFunction) => {  
+  try {  
+    res.clearCookie('token', {  
+      httpOnly: true,  
+      secure: isProd,           // ← Usar isProd en lugar de process.env.NODE_ENV  
+      sameSite: isProd ? 'none' : 'lax'  // ← Misma lógica que login  
+    })  
+    res.status(200).json({ message: 'Logged out' })  
+  } catch (error) {  
+    next(error)  
+  }  
+},
   getCurrentUser: (req: Request, res: Response, next: NextFunction) => {
     try {
       const token = req.cookies.token
