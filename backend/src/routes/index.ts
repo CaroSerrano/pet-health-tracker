@@ -1,7 +1,7 @@
 import express from 'express'
 import type { Express } from 'express'
 import authRouter from './auth-router.js'
-
+import remindersRouter from './reminders-router.js'
 import petRouter from './pets-router.js'
 import eventsRouter from './events-router.js'
 
@@ -12,6 +12,8 @@ const apiRouter = (app: Express) => {
   router.use('/api/pets', petRouter)
 
   router.use('/api/pets/:id/events', eventsRouter)
+
+  router.use('/api/reminders', remindersRouter)
 
   app.use(router)
 }

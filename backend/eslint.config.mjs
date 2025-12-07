@@ -1,4 +1,3 @@
-// eslint.config.mjs
 import { FlatCompat } from '@eslint/eslintrc'
 import js from '@eslint/js'
 import vitest from 'eslint-plugin-vitest'
@@ -24,6 +23,11 @@ export default [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ),
+  {
+    env: {
+      'node': true
+    }
+  },
   {
     files: ['**/*.test.ts', '**/*.spec.ts'],
     plugins: {

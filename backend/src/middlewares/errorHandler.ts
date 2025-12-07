@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 import { ValidationError, NotFoundError } from '../types/errors.js'
 import { ZodError, z } from 'zod'
 
@@ -6,7 +6,9 @@ export function errorHandler(
   err: unknown,
   _req: Request,
   res: Response,
-  _next: NextFunction
+  // si no agrego next, aunque no se use, no funciona bien.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  next: NextFunction
 ) {
   if (err && typeof err === 'object' && 'name' in err) {
     if (

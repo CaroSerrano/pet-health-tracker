@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { describe, it, expect, vi, beforeEach, expectTypeOf } from 'vitest'
 import { AuthService } from './auth-service.js'
 import prismaMock from '../__mocks__/client.js'

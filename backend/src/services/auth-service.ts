@@ -38,6 +38,7 @@ export class AuthService {
     if (!isValidPassword) {
       throw new ValidationError('Invalid credentials')
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...safeUser } = foundUser
     return safeUser
   }
@@ -49,6 +50,7 @@ export class AuthService {
     if (!foundUser) {
       throw new NotFoundError('User not found.')
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { passwordHash, ...safeUser } = foundUser
     return safeUser
   }
