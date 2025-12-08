@@ -82,16 +82,16 @@ export class PetService {
 
   async deletePet(id: string) {
     const petDelete = await this.prisma.pet.findUnique({
-      where: { id }
-    })
-    if (petDelete) {
-      const deleteResul = await this.prisma.pet.delete({
-        where: { id }
-      })
-      return deleteResul
-    }
+      where: {id}
+    });
+    if (!petDelete){      
+      return null;
+    }        
+    return await this.prisma.pet.delete({
+        where: {id}
+      });      
   }
-
+  
   async editPets(
     id: string,
     data: {
