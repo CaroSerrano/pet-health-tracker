@@ -1,19 +1,21 @@
-import express from 'express';
-import type { Express } from 'express';
-import authRouter from './auth-router.js';
-
-import petRouter from './pets-router.js';
-import eventsRouter from './events-router.js';
+import express from 'express'
+import type { Express } from 'express'
+import authRouter from './auth-router.js'
+import remindersRouter from './reminders-router.js'
+import petRouter from './pets-router.js'
+import eventsRouter from './events-router.js'
 
 const apiRouter = (app: Express) => {
-  const router = express.Router();
-  router.use('/api/auth', authRouter);
-  
-  router.use('/api/pets',petRouter);
+  const router = express.Router()
+  router.use('/api/auth', authRouter)
 
-  router.use('/api/pets/:id/events',eventsRouter); 
-  
-  app.use(router);
-};
+  router.use('/api/pets', petRouter)
 
-export default apiRouter;
+  router.use('/api/pets/:id/events', eventsRouter)
+
+  router.use('/api/reminders', remindersRouter)
+
+  app.use(router)
+}
+
+export default apiRouter
