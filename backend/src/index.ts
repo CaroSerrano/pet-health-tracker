@@ -3,10 +3,12 @@ import apiRouter from './routes/index.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import cookieParser from 'cookie-parser'
 import { csrfProtection } from './middlewares/csrf.js'
+import cors from 'cors'
 
 const PORT = process.env.PORT || 3000
 
 const app = express()
+app.use(cors())
 app.use(cookieParser())
 app.use(express.json())
 //app.use(csrfProtection)
