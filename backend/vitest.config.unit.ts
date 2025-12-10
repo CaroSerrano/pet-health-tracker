@@ -1,14 +1,25 @@
-import { defineConfig } from 'vitest/config'
-
-export default defineConfig({
-  test: {
-    include: ['src/**/*.test.ts']
-  },
-  resolve: {
-    alias: {
-      services: '/src/services',
-      controllers: '/src/controllers',
-      types: '/src/types'
-    }
-  }
-})
+import { defineConfig } from 'vitest/config';  
+  
+export default defineConfig({  
+  test: {  
+    include: ['src/**/*.test.ts'],  
+    coverage: {  
+      provider: 'v8',   
+      reporter: ['text', 'lcov', 'html'],  
+      exclude: [  
+        'node_modules/',  
+        'src/generated/',  
+        'dist/',  
+        '**/*.test.ts',  
+        '**/*.spec.ts'  
+      ]  
+    }  
+  },  
+  resolve: {  
+    alias: {  
+      services: '/src/services',  
+      controllers: '/src/controllers',  
+      types: '/src/types'  
+    }  
+  }  
+});
