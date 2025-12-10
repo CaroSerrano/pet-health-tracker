@@ -17,6 +17,10 @@ export const swaggerDocuments = {
         url: 'http://localhost:3000',
         description: 'Local Server',
       },
+      {
+        url: 'https://pet-health-tracker-backend.onrender.com',
+        description: 'Production Server'
+      }
     ],
   },
   apis: ['./src/routes/*.ts',"./src/docs/*.ts"],
