@@ -15,6 +15,6 @@ router.post('/', upload.single('photoUrl'), uploadImage, controller.registerPet)
 router.get('/', controller.consultPet);  
 router.get('/:id', controller.consultPetId);  
 router.delete('/:id', controller.eliminatePetId);  
-router.put('/', controller.editPetId);  
+router.put('/:id', upload.single('photoUrl'), uploadImage,controller.editPetId);   
   
 export default router;

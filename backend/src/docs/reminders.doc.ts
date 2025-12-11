@@ -20,6 +20,10 @@
  *     responses:
  *       200:
  *         description: Lista de recordatorios
+ *       400:
+ *         description: eventId is required
+ *       500:
+ *         description: Internal server error
  */
 
 /**
@@ -48,6 +52,8 @@
  *         description: OK         
  *       400:
  *         description: Bad Request
+ *       500:
+ *         description: Internal server error
  */
 
 /**
@@ -64,7 +70,12 @@
  *           type: string
  *     responses:
  *       200:
- *         description: Recordatorios eliminados
+ *         description: Reminder deleted successfully
+ *       400:
+ *         description: id is required
+ *       500:
+ *         description: Internal server error
+ *      
  */
 
 /**
@@ -81,5 +92,9 @@
  *           type: string
  *     responses:
  *       200:
- *         description: Recordatorio eliminado
- */
+ *         description: Event's reminders deleted successfully
+ *       400:
+ *         description: eventId is required
+ *       500:
+ *         description: Internal server error 
+ */         

@@ -25,9 +25,11 @@
  *                        
  *     responses:
  *       201:
- *         description: Created
+ *         description: User registered.
  *       400:
- *         description: Bad Request       
+ *         description: expected string to have >=6 characters.
+ *       500: 
+ *         description: Internal server error.      
  */
 
 /**
@@ -52,7 +54,7 @@
  *                        
  *     responses:
  *       200:
- *         description: ok
+ *         description: ok.
  *         content:
  *           application/json:
  *             schema:
@@ -62,7 +64,9 @@
  *                   type: string
  *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX
  *       400:
- *         description: Bad Request       
+ *         description: Invalid credentials.   
+ *       500: 
+ *         description: Internal server error.    
  */
 
 /**
@@ -73,9 +77,11 @@
  *     tags: [Autenticación]    
  *     responses:
  *       200:
- *         description: ok
+ *         description: ok.
  *       401:
- *         description: Unauthorized      
+ *         description: No token.   
+ *       500: 
+ *         description: Internal server error.  
  */
 
 /**
@@ -89,7 +95,9 @@
  *                       
  *     responses:
  *       200:       
- *         description: ok                   
+ *         description: Logged out.  
+ *       500: 
+ *         description: Internal server error.                 
  */
 
 /**
@@ -110,9 +118,11 @@
  *                        
  *     responses:
  *       200:
- *         description: OK  
+ *         description: Recovery password email sent to caroserrano297@gmail.com  
  *       400:
- *         description: Bad Request        
+ *         description: Invalid email address.
+ *       500: 
+ *         description: Internal server error.  
  */
 
 /**
@@ -135,11 +145,13 @@
  *                        
  *     responses:
  *       200:
- *         description: OK  
+ *         description: Password updated.  
  *       401:
- *         description: Unauthorized 
+ *         description: jwt expired. 
  *       400:
- *         description: Bad Request        
+ *         description: "Invalid input: expected string, received undefined." 
+ *       500: 
+ *         description: Internal server error.      
  */
 
 
