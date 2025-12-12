@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from 'express';  
+/*import type { Request, Response, NextFunction } from 'express';  
   
 const attempts = new Map<string, {   
   count: number;   
@@ -35,4 +35,4 @@ export const progressiveRateLimiter = (req: Request, res: Response, next: NextFu
   }  
   
   next();  
-};
+};*/
