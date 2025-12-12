@@ -54,7 +54,7 @@
  *                 type: string
  *               weight:
  *                 type: string
- *               weighed_at:
+ *               weighedAt:
  *                 type: string
  *               notes:
  *                 type: string
@@ -190,7 +190,7 @@
  *                 type: string
  *               weight:
  *                 type: string
- *               weighed_at:
+ *               weighedAt:
  *                 type: string
  *               notes:
  *                 type: string

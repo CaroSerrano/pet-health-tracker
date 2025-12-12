@@ -19,7 +19,7 @@ export const registerPetsSchema = z.object({
   weight: z.coerce
     .number({ message: 'El peso debe ser un número' })
     .positive({ message: 'El peso debe ser positivo y mayor a cero' }),
-  weighed_at: z.iso.datetime({ offset: true }).optional(),
+  weighedAt: z.iso.datetime({ offset: true }).optional(),
   notes: z.string().optional()
   //photoUrl: z.url({message:"Se espera una URL válida"})
 })

@@ -20,7 +20,7 @@ describe('pets-service', () => {
         age: new Date('2023-12-12T12:00:00Z'),
         gender: 'male',
         weight: 8.5,
-        weighed_at: null,
+        weighedAt: null,
         notes: null,
         photoUrl:
           'https://res.cloudinary.com/dv8vuqvfh/image/upload/v1764787117/mis_imagenes/o6l03tmio9xgub0nen3y.png',
@@ -50,7 +50,7 @@ describe('pets-service', () => {
           gender: 'male',
           age: '2023-12-12T12:00:00Z',
           weight: 8.5,
-          weighed_at: null,
+          weighedAt: null,
           notes: null,
           photoUrl:
             'https://res.cloudinary.com/dv8vuqvfh/image/upload/v1764787117/mis_imagenes/o6l03tmio9xgub0nen3y.png',
@@ -71,7 +71,7 @@ describe('pets-service', () => {
           age: new Date('2023-12-12T12:00:00Z'),
           gender: 'male',
           weight: 8.5,
-          weighed_at: null,
+          weighedAt: null,
           notes: null,
           photoUrl:
             'https://res.cloudinary.com/dv8vuqvfh/image/upload/v1764787117/mis_imagenes/o6l03tmio9xgub0nen3y.png',
@@ -101,7 +101,7 @@ describe('pets-service', () => {
         age: new Date('2023-12-12T12:00:00Z'),
         gender: 'male',
         weight: 8.5,
-        weighed_at: null,
+        weighedAt: null,
         notes: null,
         photoUrl:
           'https://res.cloudinary.com/dv8vuqvfh/image/upload/v1764787117/mis_imagenes/o6l03tmio9xgub0nen3y.png',
@@ -128,7 +128,7 @@ describe('pets-service', () => {
         age: new Date('2023-12-12T12:00:00Z'),
         gender: 'male',
         weight: 8.5,
-        weighed_at: null,
+        weighedAt: null,
         notes: null,
         photoUrl:
           'https://res.cloudinary.com/dv8vuqvfh/image/upload/v1764787117/mis_imagenes/o6l03tmio9xgub0nen3y.png',
@@ -168,7 +168,7 @@ describe('pets-service', () => {
         gender: 'male',
         notes: null,
         weight: 14,
-        weighed_at: null,
+        weighedAt: null,
         photoUrl:
           'https://res.cloudinary.com/dv8vuqvfh/image/upload/v1764787117/mis_imagenes/o6l03tmio9xgub0nen3y.png',
         userId: '123',
@@ -183,7 +183,7 @@ describe('pets-service', () => {
         gender: mockPet.gender,
         age: mockPet.age.toISOString(),
         notes: null,
-        weighed_at: null,
+        weighedAt: null,
         weight: mockPet.weight,
         photoUrl: mockPet.photoUrl
       })
@@ -196,7 +196,7 @@ describe('pets-service', () => {
           gender: mockPet.gender,
           age: mockPet.age.toISOString(),
           weight: mockPet.weight,
-          weighed_at: null,
+          weighedAt: null,
           notes: null,
           photoUrl: mockPet.photoUrl
         }
@@ -215,7 +215,7 @@ describe('pets-service', () => {
         gender: 'female',
         age: new Date('2023-12-12T12:00:00Z'),
         weight: 20,
-        weighed_at: null,
+        weighedAt: null,
         notes: null,
         photoUrl: 'http://foto.jpg',
         userId: '123',

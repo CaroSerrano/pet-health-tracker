@@ -14,7 +14,7 @@ export class PetService {
     gender,
     age,
     weight,
-    weighed_at,
+    weighedAt,
     notes,
     photoUrl
   }: {
@@ -26,7 +26,7 @@ export class PetService {
     age: string | Date
     notes?: string | null
     weight: number
-    weighed_at?: string | null
+    weighedAt?: string | null
     photoUrl: string
   }) {
     // realizar todas las validaciones
@@ -63,7 +63,7 @@ export class PetService {
         age,
         notes: notes ? notes : null,
         weight,
-        weighed_at: weighed_at ? weighed_at : null,
+        weighedAt: weighedAt ? weighedAt : null,
         photoUrl
       }
     })
@@ -103,6 +103,9 @@ export class PetService {
       breed: string
       age: string | Date
       weight: number
+      gender: string
+      weighedAt?: string | null
+      notes?: string | null
       photoUrl: string
     }
   ) {

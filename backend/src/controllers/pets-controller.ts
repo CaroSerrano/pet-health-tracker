@@ -34,7 +34,7 @@ export const petController = (deps: ControllerDeps) => ({
         gender: data.gender,
         age: data.age,
         weight: data.weight,
-        weighed_at: data.weighed_at ? data.weighed_at : null,
+        weighedAt: data.weighedAt ? data.weighedAt: null,
         notes: data.notes ? data.notes : null,
         photoUrl: photoUrl.url
       })
@@ -103,7 +103,7 @@ export const petController = (deps: ControllerDeps) => ({
         gender: data.gender,
         age: data.age,
         weight: data.weight,        
-        weighed_at: data.weighed_at ? data.weighed_at : null,
+        weighed_at: data.weighedAt ? data.weighedAt : null,
         notes: data.notes ? data.notes : null,
       };
 

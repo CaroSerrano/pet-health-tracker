@@ -39,7 +39,7 @@ describe('pets-controller', () => {
         userId: 'user123',
         ...reqBody,
         notes: null,
-        weighed_at: null,
+        weighedAt: null,
         photoUrl: 'http://img.com/pet.jpg'
       }
       vi.mocked(registerPetsSchema.parse).mockReturnValue(reqBody)
@@ -74,7 +74,7 @@ describe('pets-controller', () => {
         age: '2023-12-12T12:00:00Z',
         weight: 20,
         notes: null,
-        weighed_at: null,
+        weighedAt: null,
         photoUrl: 'http://img.com/pet.jpg'
       })
       expect(res.status).toHaveBeenCalledWith(201)

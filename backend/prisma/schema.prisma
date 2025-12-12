@@ -32,7 +32,7 @@ model Pet {
   gender     String
   age        DateTime
   weight     Float
-  weighed_at DateTime?
+  weighedAt DateTime?
   notes      String?
   photoUrl   String
   user       User      @relation(fields: [userId], references: [id])
