@@ -20,6 +20,12 @@ export const petController = (deps: ControllerDeps) => ({
         )
       }
 
+      if (!photoUrl) {
+        throw new ValidationError(
+          'Debe subir una imagen.'
+        )
+      }
+      
       const newPet = await deps.petService.register({
         userId,
         name: data.name,
@@ -79,22 +85,26 @@ export const petController = (deps: ControllerDeps) => ({
       const data = registerPetsSchema.parse(req.body)
       const petId = req.params.id
       const photoUrl = (req as any).cloudinaryImage
-
+      
       if (!petId) {
         throw new ValidationError('No existe la mascota.')
       }
       const consultPetIdId = await deps.petService.consultPet(petId)
       if (!consultPetIdId) {
         throw new NotFoundError('La mascota no existe.')
-      }
-      const editPetsS = await deps.petService.editPets(petId, {
+      }         
+      const updateData: any = {
         name: data.name,
         species: data.species,
         breed: data.breed,
         age: data.age,
-        weight: data.weight,
-        photoUrl: photoUrl.url
-      })
+        weight: data.weight        
+      };
+
+      if (photoUrl?.url){ 
+        updateData.photoUrl = photoUrl.url;
+      }
+      const editPetsS = await deps.petService.editPets(petId, updateData)
       return res.status(200).json({
         message: 'Mascota actualizada correctamente',
         data: editPetsS

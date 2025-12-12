@@ -11,8 +11,9 @@ export const uploadImage = async (
   next: NextFunction
 ) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({ message: 'Debes enviar una foto' })
+    if (!req.file) {      
+      (req as any).cloudinaryImage = null;
+      return next();
     }
     const result = await new Promise<UploadApiResponse>((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
