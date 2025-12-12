@@ -13,6 +13,7 @@ export const remindersController = (deps: ControllerDeps) => ({
       const data = createReminderSchema.parse(req.body)
       const newReminder = await deps.remindersService.create({
         eventId: data.eventId,
+        description: data.description ? data.description : null,
         triggerTime: data.triggerTime
       })
       const eventType = newReminder.event.type
@@ -39,7 +40,7 @@ export const remindersController = (deps: ControllerDeps) => ({
       await scheduleEmailReminder(
         user.email!,
         subject,
-        data.message || '',
+        data.description || '',
         data.eventUrl || '',
         newReminder.id,
         new Date(data.triggerTime),

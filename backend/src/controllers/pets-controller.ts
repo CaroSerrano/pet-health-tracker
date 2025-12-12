@@ -25,8 +25,11 @@ export const petController = (deps: ControllerDeps) => ({
         name: data.name,
         species: data.species,
         breed: data.breed,
+        gender: data.gender,
         age: data.age,
         weight: data.weight,
+        weighed_at: data.weighed_at ? data.weighed_at : null,
+        notes: data.notes ? data.notes : null,
         photoUrl: photoUrl.url
       })
       return res.status(201).json({
@@ -91,8 +94,11 @@ export const petController = (deps: ControllerDeps) => ({
         name: data.name,
         species: data.species,
         breed: data.breed,
+        gender: data.gender,
         age: data.age,
         weight: data.weight,
+        weighed_at: data.weighed_at ? data.weighed_at : null,
+        notes: data.notes ? data.notes : null,
         photoUrl: photoUrl.url
       })
       return res.status(200).json({
