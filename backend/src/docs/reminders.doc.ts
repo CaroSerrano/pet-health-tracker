@@ -38,18 +38,24 @@
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *             - eventId
+ *             - triggerTime
  *             properties:
  *               eventId:
  *                 type: string
  *               triggerTime:
  *                 type: string
- *               message:
+ *                 description: Activation time (ISO 8601)
+ *               description:
  *                 type: string
+ *                 description: Optional notes
  *               eventUrl:
  *                 type: string
+ *                 description: Optional. To allow the user to navigate to the event page
  *     responses:
  *       201:
- *         description: OK         
+ *         description: OK
  *       400:
  *         description: Bad Request
  *       500:
@@ -75,20 +81,20 @@
  *         description: id is required
  *       500:
  *         description: Internal server error
- *      
+ *
  */
 
 /**
  * @swagger
  * /api/reminders/{id}:
  *   delete:
- *     summary: Eliminar un recordatorio por ID 
- *     tags: [Recordatorios]    
+ *     summary: Eliminar un recordatorio por ID
+ *     tags: [Recordatorios]
  *     parameters:
  *       - name: id
- *         in: path         
+ *         in: path
  *         required: true
- *         schema:
+ *         schema:Optional
  *           type: string
  *     responses:
  *       200:
@@ -96,5 +102,5 @@
  *       400:
  *         description: eventId is required
  *       500:
- *         description: Internal server error 
- */         
+ *         description: Internal server error
+ */

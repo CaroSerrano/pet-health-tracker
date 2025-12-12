@@ -1,5 +1,5 @@
 /**
- * @swagger 
+ * @swagger
  * tags:
  *   - name: Pets
  *     description: Operaciones relacionadas con mascotas
@@ -16,7 +16,7 @@
  *         description: Listado de mascotas encontradas
  *       400:
  *         description: No tiene mascotas registradas
- *       500: 
+ *       500:
  *        description: Internal server error
  */
 
@@ -29,9 +29,17 @@
  *     requestBody:
  *       required: true
  *       content:
- *         multipart/form-data:        
+ *         multipart/form-data:
  *           schema:
  *             type: object
+ *             required:
+ *             - name
+ *             - species
+ *             - breed
+ *             - gender
+ *             - age
+ *             - weight
+ *             - photoUrl
  *             properties:
  *               name:
  *                 type: string
@@ -39,20 +47,27 @@
  *                 type: string
  *               breed:
  *                 type: string
+ *               gender:
+ *                 type: string
+ *                 enum: [female, male]
  *               age:
  *                 type: string
  *               weight:
- *                 type: string 
+ *                 type: string
+ *               weighed_at:
+ *                 type: string
+ *               notes:
+ *                 type: string
  *               photoUrl:
  *                 type: string
  *                 format: binary
- *                        
+ *
  *     responses:
  *       201:
  *         description: Mascota creada
- *       400: 
- *        description: Ya tienes una mascota registrada con ese nombre   
- *       500: 
+ *       400:
+ *        description: Ya tienes una mascota registrada con ese nombre
+ *       500:
  *        description: Internal server error
  */
 
@@ -68,13 +83,13 @@
  *         required: true
  *         description: ID de la mascota
  *         schema:
- *         type: string     
+ *         type: string
  *     responses:
  *       200:
  *         description: Mascota Encontrada con exito
  *       404:
  *         description: La mascota no existe
- *       500: 
+ *       500:
  *        description: Internal server error
  */
 
@@ -159,7 +174,7 @@
  *     requestBody:
  *       required: true
  *       content:
- *         multipart/form-data:        
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
@@ -169,20 +184,26 @@
  *                 type: string
  *               breed:
  *                 type: string
+ *               gender:
+ *                 type: string
  *               age:
  *                 type: string
  *               weight:
- *                 type: string 
+ *                 type: string
+ *               weighed_at:
+ *                 type: string
+ *               notes:
+ *                 type: string
  *               photoUrl:
  *                 type: string
  *                 format: binary
- *                        
+ *
  *     responses:
  *       200:
  *         description: Mascota actualizada correctamente
- *       404: 
- *        description: La mascota no existe   
- *       500: 
+ *       404:
+ *        description: La mascota no existe
+ *       500:
  *        description: Internal server error
  */
 
@@ -190,19 +211,19 @@
  * @swagger
  * /api/pets/{id}:
  *   delete:
- *     summary: Eliminar una mascota por ID 
- *     tags: [Pets]    
+ *     summary: Eliminar una mascota por ID
+ *     tags: [Pets]
  *     parameters:
  *       - name: id
- *         in: path         
+ *         in: path
  *         required: true
  *         schema:
  *           type: string
  *     responses:
  *       200:
  *         description: Mascota Eliminada
- *       404: 
+ *       404:
  *        description: La mascota no existe o ya fue eliminada
- *       500: 
- *        description: Internal server error      
- */ 
+ *       500:
+ *        description: Internal server error
+ */
